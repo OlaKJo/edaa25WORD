@@ -10,7 +10,6 @@ int main(void)
 	char * current;
 	char * temp;
 
-	int i = 2;
 	int longest_size = 0;
 	int ch;
 	int pos_in_word = 0;
@@ -29,21 +28,14 @@ int main(void)
 			if (pos_in_word > longest_size)
 			{
 				longest_size = pos_in_word;
-				*(current + pos_in_word) = '\0';
-
 				temp = longest;
 				longest = current;
 				current = temp;
 			}
 			pos_in_word = 0;
 		}
-		if (pos_in_word >= MAX)
-		{
-			longest = realloc(longest, MAX * i++);
-			current = realloc(current, MAX * i++);
-		}
 	}
-	//*(longest + longest_size) = '\0';
+	*(longest + longest_size) = '\0';
 	printf("%d characters in longest word: %s\n",longest_size, longest);
 	free(longest);
 	free(current);
